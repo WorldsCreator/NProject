@@ -11,9 +11,11 @@ n = int(input())
 a = input().split(' ')
 res = nextEqual(a, 0)
 ch = a[0]
-for i in range(n):
+i = 1
+while i < n:
     num = nextEqual(a, i)
     if num > res:
         res = num
         ch = a[i]
+    i += num
 print(ch + ' ' + str(res))
