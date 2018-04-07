@@ -1,14 +1,13 @@
 from random import randint
 
-n, x = map(int, input().split(' '))
+r, x = map(int, input().split(' '))
 a = []
-for i in range(n):
-    a.append(randint(0, 10))
+for i in range(r):
+    a.append(randint(0, r))
 print(*a)
 a.sort()
 print(*a)
 l = 0
-r = n
 while l < r - 1:
     c = (l + r) // 2
     if x < a[c]:
@@ -22,10 +21,14 @@ if a[l] == x:
 else:
     print("Not found")
 
-    try:
+    if r < len(a):
+        cl = []
         if x - l > r - x:
-            print(a[r])
+            cl.append(r)
+            cl.append(a[r])
         else:
-            print(a[l])
-    except IndexError:
-        print(a[l])
+            cl.append(r)
+            cl.append(a[l])
+        print("Nearest: A[{}]={}".format(cl))
+    else:
+        print("Nearest: A[{}]={}".format(l, a[l]))
